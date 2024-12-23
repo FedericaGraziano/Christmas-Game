@@ -123,7 +123,7 @@ def mostra_risultato():
     st.title("🎉 Risultato Finale 🎉")
     st.write(f"Il tuo punteggio totale è: **{st.session_state.punteggio} punti**.")
 
-    if st.session_state.punteggio <= 2:
+    if st.session_state.punteggio <= 3:
         st.error("Hai bisogno di ripassare ancora un po' prima di festeggiare il Natale! A meno che tu non sia il Grinch!")
         st.video("https://www.youtube.com/watch?v=nytpYtLtHpE")
     elif 4 <= st.session_state.punteggio <= 5:
