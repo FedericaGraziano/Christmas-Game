@@ -103,20 +103,24 @@ def livello3():
     
     if st.button("Prova a indovinare"):
         if guess == regalo_misterioso:
-            punti = st.session_state.tentativi
-            st.success(f"🎉 Complimenti! Hai indovinato! Il regalo misterioso era: **{regalo_misterioso.capitalize()}**")
-            st.session_state.punteggio += punti
-            st.session_state.livello = 4
-            st.experimental_rerun()
+           punti = st.session_state.tentativi
+           st.success(f"🎉 Complimenti! Hai indovinato! Il regalo misterioso era: **{regalo_misterioso.capitalize()}**")
+           st.session_state.punteggio += punti
+           st.session_state.livello = 4
+           st.session_state.indovinato = True  # Indica che il regalo è stato indovinato
         else:
-            st.session_state.tentativi -= 1
-            if st.session_state.tentativi > 0:
-                st.warning(f"❌ Non è quello il regalo! Hai ancora {st.session_state.tentativi} tentativi.")
-            else:
-                st.error(f"🎅 Oh no! Il regalo misterioso era: **{regalo_misterioso.capitalize()}**")
-                st.session_state.livello = 4
-                if st.button("Vai al punteggio finale"):
-                    st.experimental_rerun()
+           st.session_state.tentativi -= 1
+           if st.session_state.tentativi > 0:
+             st.warning(f"❌ Non è quello il regalo! Hai ancora {st.session_state.tentativi} tentativi.")
+           else:
+             st.error(f"🎅 Oh no! Il regalo misterioso era: **{regalo_misterioso.capitalize()}**")
+             st.session_state.livello = 4
+             st.session_state.indovinato = False  # Indica che non ci sono più tentativi
+
+# Mostra sempre il pulsante "Vai al punteggio finale" dopo un'azione di indovinare
+    if st.session_state.livello == 4:
+        if st.button("Vai al punteggio finale"):
+            st.experimental_rerun()
 
 # Funzione per mostrare il risultato finale
 def mostra_risultato():
