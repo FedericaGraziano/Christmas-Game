@@ -93,7 +93,7 @@ def livello3():
     st.title("🎅 Livello 3: Indovina il Regalo di Natale! 🎁")
     st.write("Hai **3 tentativi** per indovinare il regalo misterioso. Buona fortuna!")
     
-    regali = ["bambola", "trenino", "cioccolato", "videogioco", "libro", "puzzle", "orsacchiotto", "scatola di Lego"]
+    regali = ["bambola", "trenino", "cioccolato", "videogioco", "libro", "puzzle", "orsacchiotto"]
     if not st.session_state.regalo_misterioso:
         st.session_state.regalo_misterioso = random.choice(regali)
     regalo_misterioso = st.session_state.regalo_misterioso
@@ -121,15 +121,15 @@ def livello3():
 # Funzione per mostrare il risultato finale
 def mostra_risultato():
     st.title("🎉 Risultato Finale 🎉")
-    st.write(f"Il tuo punteggio totale è: **{st.session_state.punteggio} punti**.")
+    st.write(f"Il tuo punteggio totale è: **{st.session_state.punteggio} punti su 7 punti**.")
 
     if st.session_state.punteggio <= 3:
         st.error("Hai bisogno di ripassare ancora un po' prima di festeggiare il Natale! A meno che tu non sia il Grinch!")
         st.video("https://www.youtube.com/watch?v=nytpYtLtHpE")
-    elif 4 <= st.session_state.punteggio <= 5:
-        st.warning("Bravo! Sei pronto per festeggiare il Natale ma puoi migliorare!")
+    elif 4 <= st.session_state.punteggio < 5:
+        st.warning("Bravo! Sei pronto per festeggiare il Natale, ma puoi migliorare!")
         st.video("https://www.youtube.com/watch?v=xv-y0xhMqkI")
-    elif 6 <= st.session_state.punteggio <= 7:
+    elif 5 <= st.session_state.punteggio <= 7:
         st.success("Sei il re del Natale!")
         st.video("https://www.youtube.com/watch?v=8nMsY0_7FYA")
 
